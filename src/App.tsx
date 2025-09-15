@@ -12,8 +12,9 @@ export const App = () => {
           </h1>
 
           <p className="text-gray-500">
-            一些小项目，用一个 Markdown 就可以完整介绍。为了方便分享，将
-            Markdown 转为 HTML 是个不错的选择。
+            对于一些小项目，用一个 Markdown
+            就可以完整介绍，比如：README.md。为了方便分享，经常会将 Markdown
+            转为 HTML，所以就有了这样一个小工具。
           </p>
 
           <div className="flex gap-3 mt-6">
@@ -36,7 +37,7 @@ export const App = () => {
           <button className="leading-8 px-4 py-1 rounded-md bg-white cursor-pointer hover:bg-zinc-200 active:bg-zinc-300">
             选择 .md 文件
           </button>
-          {/* <button className="leading-8 px-4 py-1 rounded-md bg-green-500 text-white cursor-pointer hover:bg-zinc-200 active:bg-zinc-300">
+          {/* <button className="leading-8 px-4 py-1 rounded-md bg-green-500 text-white cursor-pointer">
             下载压缩包
           </button> */}
         </main>
