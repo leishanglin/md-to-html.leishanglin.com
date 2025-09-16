@@ -1,31 +1,30 @@
-import { useTimer } from "./hooks/useTimer";
+import { useFilePicker } from "./hooks/useFilePicker";
 
 export const App = () => {
-  const timer = useTimer();
+  const filePicker = useFilePicker({
+    accept: [".md"],
+    maxSize: 1024 * 1024 * 10,
+  });
 
   return (
-    <div className="h-screen w-screen bg-[#f7f7f7] flex items-start justify-center overflow-y-auto">
+    <div className="h-screen w-screen bg-zinc-50 text-zinc-950 flex items-start justify-center overflow-y-auto">
       <div className="px-8 py-30 w-full flex flex-col gap-10 text-sm leading-8 sm:w-150 sm:px-5">
         <header>
           <h1 className="leading-20 text-base font-bold text-center">
             Markdown 转 HTML
           </h1>
 
-          <p className="text-gray-500">
-            对于一些小项目，用一个 Markdown
-            就可以完整介绍，比如：README.md。为了方便分享，经常会将 Markdown
-            转为 HTML，所以就有了这样一个小工具。
-          </p>
+          <p>Hello, World!</p>
 
           <div className="flex gap-3 mt-6">
-            <span className="text-gray-500">更新于: 3 天前</span>
+            <span>更新于: 3 天前</span>
             <div className="flex-1 w-0 flex justify-end gap-3">
-              <span className="text-gray-700">开发者:</span>
+              <span className="">开发者:</span>
 
               <a
                 href="https://cv.ujiu.cc/"
                 target="_blank"
-                className="text-gray-500 underline decoration-dashed underline-offset-6 hover:decoration-solid "
+                className="underline decoration-dashed underline-offset-6 hover:decoration-solid "
               >
                 leishanglin
               </a>
@@ -33,10 +32,20 @@ export const App = () => {
           </div>
         </header>
 
-        <main className="flex justify-center">
-          <button className="leading-8 px-4 py-1 rounded-md bg-white cursor-pointer hover:bg-zinc-200 active:bg-zinc-300">
+        <main className="flex justify-center items-center flex-col gap-1">
+          <button
+            className="leading-8 px-4 py-1 rounded-md bg-zinc-200 cursor-pointer"
+            onClick={() => {
+              filePicker.openFilePicker();
+            }}
+          >
             选择 .md 文件
           </button>
+
+          <div className="flex">
+            <div>{filePicker.file?.name}</div>
+            <div className="text-rose-500">{filePicker.error}</div>
+          </div>
           {/* <button className="leading-8 px-4 py-1 rounded-md bg-green-500 text-white cursor-pointer">
             下载压缩包
           </button> */}
