@@ -1,27 +1,39 @@
 export interface RenderConfig {
+  // Markdown 文档转换后的 html 字符串片段
   content: string;
+  // 协议+域名+端口
   domain: string;
-  path: string;
-  title: string;
+  // 域名+端口
   domainName: string;
+  // 网页标题
+  title: string;
+  // 关键词
   keywords: string;
+  // 描述
   description: string;
+  // 作者
   author: string;
+  // 发布时间
   datePublished: string;
+  // 修改时间
   dateModified: string;
+  // 相对发布时间
   relativeDatePublished: string;
+  // 相对修改时间
   relativeDateModified: string;
+  // 是否存在代码块
   hasCodeBlock: boolean;
+  // 主题
   theme: string;
+  //
   blogName: string;
-  authorUrl: string;
   auditCode: string;
   indexJsName: string;
   indexCssName: string;
 }
 
 export const renderTemplateHtml = (config: RenderConfig) => {
-  const url = `${config.domain}${config.path}`;
+  const url = `${config.domain}/`;
   return `<!DOCTYPE html>
 <html lang="zh-CN" style="font-size: 16px">
   <head>
@@ -32,12 +44,12 @@ export const renderTemplateHtml = (config: RenderConfig) => {
     <meta name="description" content="${config.description}" />
     <meta name="color-scheme" content="light dark" />
     <meta name="robots" content="index, follow" />
-    <meta name="author" content="${config.author}" />
+    <meta name="author" content="leishanglin" />
     <link rel="canonical" href="${url}" />
     <meta property="og:title" content="${config.title}" />
     <meta property="og:description" content="${config.description}" />
     <meta property="og:image" content="${config.domain}/images/poster.png" />
-    <meta property="og:site_name" content="${config.author}的随笔" />
+    <meta property="og:site_name" content="${config.title}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:type" content="website" />
     <meta property="twitter:image" content="${
@@ -69,7 +81,7 @@ export const renderTemplateHtml = (config: RenderConfig) => {
         "image": "${config.domain}/images/large-favicon.png",
         "author": {
           "@type": "Person",
-          "name": "${config.author}"
+          "name": "leishanglin"
         },
         "publisher": {
           "@type": "Organization",
@@ -183,11 +195,11 @@ export const renderTemplateHtml = (config: RenderConfig) => {
         <h1>${config.title}</h1>
         <div id="dateContainer">
           <span>
-            <a href="${config.authorUrl}" title="author" target="_blank">${
-    config.author
-  }</a>&nbsp;&nbsp;更新于：<time datetime="${config.dateModified}">${
-    config.relativeDateModified
-  }</time>
+            <a href="https://cv.leishanglin.com" title="author" target="_blank">leishanglin</a>&nbsp;&nbsp;更新于：<time datetime="${
+              config.dateModified
+            }">
+            ${config.relativeDateModified}
+            </time>
           </span>
 
           <div class="right-wrapper">
@@ -198,7 +210,6 @@ export const renderTemplateHtml = (config: RenderConfig) => {
             </span>
           </div>
         </div>
-
         ${config.content}
       </article>
     </main>

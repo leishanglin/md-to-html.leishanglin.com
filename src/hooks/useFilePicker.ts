@@ -14,7 +14,7 @@ interface UseFilePickerResult {
 }
 
 export const useFilePicker = (
-  options: UseFilePickerOptions = {},
+  options: UseFilePickerOptions = {}
 ): UseFilePickerResult => {
   const { accept = [], maxSize } = options;
   const [file, setFile] = useState<File | null>(null);
